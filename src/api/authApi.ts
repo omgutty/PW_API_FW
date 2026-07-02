@@ -10,3 +10,30 @@
  * changing its code.
  */
 
+
+import {type  APIRequestContext } from "@playwright/test";
+import { type AuthResponse } from "./types";
+import { env } from "@config/env"; 
+import { endpoints } from "./endpoints";
+
+export class AuthApi {
+    constructor (private request: APIRequestContext){
+        //created constuctor to intilize the apirequest context with private request 
+    }
+
+    //create a async function which create a access token, 
+
+async createtoken(){
+    const response= await this.request.post(endpoints.auth, {
+       data:{
+                username: env.authUsername,
+                password: env.authPassword,
+        }
+    });
+    const responsebody:AuthResponse = await response.json()
+    return responsebody.token;
+}
+
+
+
+}
