@@ -15,7 +15,8 @@
       "@api/*": ["./src/api/*"],
       "@schemas/*": ["./src/schemas/*"],
       "@config/*": ["./src/config/*"],
-      "@data/*": ["./src/data/*"]
+      "@data/*": ["./src/data/*"],
+      "@fixtures/*": ["./src/fixtures/*"]
     }
   },
   "include": ["src", "tests", "playwright.config.ts"],
