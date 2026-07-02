@@ -20,6 +20,7 @@
   "homepage": "https://github.com/omgutty/PW_API_FW#readme",
   "devDependencies": {
     "@playwright/test": "^1.61.1",
+    "@types/node": "^26.1.0",
     "allure-playwright": "^3.10.2",
     "typescript": "^6.0.3"
   },
