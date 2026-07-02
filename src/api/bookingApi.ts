@@ -40,7 +40,7 @@ export class BookingApi {
 
     async delete(id:number,token:string):Promise<APIResponse>{
         return this.request.delete(endpoints.bookingById(id),{
-            headers: {coockies:`token=${token}`}
+            headers: {Cookie:`token=${token}`}
         })
     }
 }

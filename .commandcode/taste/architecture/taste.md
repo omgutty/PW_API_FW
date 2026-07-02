@@ -1,0 +1,12 @@
+# architecture
+- This project uses Playwright's APIRequestContext with dependency injection design pattern for API service classes. Confidence: 0.70
+- API service classes receive APIRequestContext via constructor and return raw APIResponse (not parsed body) for BookingApi operations. Confidence: 0.70
+- Use Playwright custom fixtures (base.extend<ApiFixture>) for dependency injection and lifecycle management of API services and auth tokens. Confidence: 0.70
+- Auth token fixture depends on AuthApi fixture; fixtures are lazily evaluated only when tests request them. Confidence: 0.70
+- Use Ajv with ajv-formats for runtime JSON schema validation of API responses, with centralized assertion utility in assertions/schema.ts. Confidence: 0.70
+- Use Faker (faker-js) for generating test data in booking.data.ts factory functions. Confidence: 0.70
+- Centralize endpoint paths in endpoints.ts, TypeScript interfaces in types.ts, and JSON schemas in schemas/booking.schema.ts. Confidence: 0.70
+- The framework targets the restful-booker.herokuapp.com demo API with AuthApi (createtoken) and BookingApi (create, getbyid, update, delete) services. Confidence: 0.70
+- Env config (env.ts) fails loudly on missing environment variables with requireEnv() helper. Confidence: 0.70
+- BookingApi.delete() has a bug: header key uses "coockies" instead of "Cookie" - needs fixing. Confidence: 0.70
+- tests/ directory is empty - framework is scaffolded but no test spec files exist yet. Confidence: 0.70
