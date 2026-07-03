@@ -3,6 +3,7 @@ import{bookingSchema} from '@schemas/booking.schema';
 import {BuildBooking} from '@data/booking.data'
 import { validateSchema } from '@assertions/schema';
 import { Booking, type BookingResponse } from '@api/types';
+import { endpoints } from '../src/api/endpoints';
 
 test.describe('booking API tests', ()=>{
     test('should create a new booking',async ({bookingApi})=>{
@@ -51,5 +52,32 @@ test.describe('booking API tests', ()=>{
         
 
         validateSchema(bookingSchema,getresponsebody)
+        expect(getresponse.headers()['content-type']).toContain('application/json');
+    })
+
+    test('should update a booking',async ({bookingApi,authToken})=>{
+        const original=BuildBooking()
+        const creatresponse = await bookingApi.create(original);
+        const {bookingid} = await creatresponse.json()
+        
+        const updatedPayload =BuildBooking({totalprice:145});
+        console.log(updatedPayload.totalprice)
+        
+        const updateResponse = await bookingApi.udpate(bookingid,updatedPayload,authToken)
+        expect( updateResponse.status()).toBe(200);
+
+        const updatedResponseBody = await updateResponse.json()
+        expect(updatedResponseBody.totalprice).toBe(145)
+    })
+
+    test('should delete a booking', async ({bookingApi, authToken})=>{
+        const payload= BuildBooking();
+        const response= await bookingApi.create(payload);
+        const {bookingid}=  await response.json()
+
+        const deleteresponse = await bookingApi.delete(bookingid,authToken);
+        expect(deleteresponse.status()).toBe(201);
+        const getResponse = await bookingApi.getbyID(bookingid);
+        expect(getResponse.status()).toBe(404);
     })
 })

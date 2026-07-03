@@ -14,6 +14,7 @@ export default defineConfig({
     baseURL: process.env.BASE_URL || 'https://restful-booker.herokuapp.com',
     extraHTTPHeaders: {
       'Content-Type': 'application/json',
+      'Accept': 'application/json',
     },
   },
 });
