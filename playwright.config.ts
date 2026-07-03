@@ -1,8 +1,6 @@
 // playwright.config.ts
 import { defineConfig } from '@playwright/test';
-import * as dotenv from 'dotenv';
-
-dotenv.config();
+import { env } from '@config/env';
 
 export default defineConfig({
   testDir: './tests',
@@ -11,11 +9,10 @@ export default defineConfig({
   reporter: [['list'], ['html', { open: 'never' }]],
 
   use: {
-    baseURL: process.env.BASE_URL || 'https://restful-booker.herokuapp.com',
+    baseURL: env.baseUrl,
     extraHTTPHeaders: {
       'Content-Type': 'application/json',
-      'Accept': 'application/json',
+      Accept: 'application/json',
     },
   },
 });
-
