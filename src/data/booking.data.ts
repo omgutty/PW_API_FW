@@ -2,7 +2,7 @@ import { type Booking } from "@api/types";
 
 let counter=0;
 
-export function BuildBooking(overrides: Partial<Booking>):Booking{
+export function BuildBooking(overrides: Partial<Booking>={}):Booking{
     
     counter+=1;
 
