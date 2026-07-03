@@ -17,7 +17,7 @@ export function BuildBooking(overrides: Partial<Booking>={}):Booking{
           },
           additionalneeds: 'Breakfast',
           //
-          ...overrides,
+          //...overrides,
     }
 }
 

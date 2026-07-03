@@ -27,7 +27,7 @@ export class BookingApi {
         return this.request.post(endpoints.booking,{data:payload})
     }
 
-    async getbyid(id:number):Promise<APIResponse>{
+    async getbyID(id:number):Promise<APIResponse>{
         return this.request.get(endpoints.bookingById(id));
     }
 
